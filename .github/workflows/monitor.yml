@@ -43,4 +43,4 @@ jobs:
           name: climate-monitor-logs
           path: logs/
     
-          git push
+          
