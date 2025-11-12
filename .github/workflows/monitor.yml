@@ -35,4 +35,12 @@ jobs:
           git config --local user.name "GitHub Action"
           git add seen_articles.json
           git diff --quiet && git diff --staged --quiet || git commit -m "Update seen articles"
+          
+      - name: Upload logs
+        if: always()  # ensures logs get uploaded even if the script errors
+        uses: actions/upload-artifact@v4
+        with:
+          name: climate-monitor-logs
+          path: logs/
+    
           git push
