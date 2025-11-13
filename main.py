@@ -74,7 +74,7 @@ def send_discord_notification(article):
     headers = {"Content-Type": "application/json"}
 
     try:
-        response = requests.post(DISCORD_WEBHOOK_URL, json=data, headers=headers, timeout=10)
+        response = requests.post(webhook_url, json=data, headers=headers, timeout=10)
         if 200 <= response.status_code < 300:
             logging.info(f"✅ Notification sent: {article['title']}")
         else:
