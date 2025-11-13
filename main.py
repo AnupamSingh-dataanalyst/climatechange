@@ -1,4 +1,5 @@
 import feedparser
+import os
 import requests
 import json
 import logging
@@ -6,7 +7,9 @@ from datetime import datetime
 from pathlib import Path
 
 # === Configuration ===
-DISCORD_WEBHOOK_URL = "your_discord_webhook_url_here"
+webhook_url = os.environ.get("DISCORD_WEBHOOK_URL")
+if not webhook_url:
+    raise RuntimeError("Discord webhook URL not set in environment")
 RSS_FEED_URL = "https://www.thehindu.com/sci-tech/energy-and-environment/feeder/default.rss"
 SEEN_ARTICLES_FILE = "seen_articles.json"
 LOG_DIR = "logs"
